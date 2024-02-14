@@ -1,9 +1,30 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {ref, watch} from "vue";
 
 const selected = ref(0);
 
-const onClickContainer = (e: MouseEvent) => {
+watch(()=>selected.value, (id: typeof selected.value)=>{
+  switch (id){
+    case 1:{
+      console.log("Нажата кнопка 1")
+      break;
+    }
+    case 2:{
+      console.log("Нажата кнопка 2")
+      break;
+    }
+    case 3:{
+      console.log("Нажата кнопка 3")
+      break;
+    }
+    case 4:{
+      console.log("Нажата кнопка 4")
+      break;
+    }
+  }
+})
+
+const onClickContainer = () => {
   selected.value = 0
 }
 
