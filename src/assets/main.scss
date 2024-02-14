@@ -1,3 +1,7 @@
+$block-deg: -11.5deg;
+$transition-seconds: .5s;
+$translateZ: 20px;
+$blur-filter: 100px;
 
 html {
     line-height: 1.15;
@@ -45,14 +49,14 @@ body {
     height: 806px;
     position: relative;
     z-index: 100;
-    transition: .5s;
+    transition: $transition-seconds;
 }
 
 .block .bg {
     position: absolute;
     height: 100%;
     width: 559px;
-    transform: skew(11.5deg);
+    transform: skew(-$block-deg);
     z-index: 102;
 }
 
@@ -61,7 +65,7 @@ body {
     width: 386px;
     height: 800px;
     z-index: 102;
-    transition: .5s;
+    transition: $transition-seconds;
     border-radius: 800px;
 }
 
@@ -72,7 +76,7 @@ body {
 
 .block:nth-child(1) {
     margin-top: -60px;
-    transform: skew(-11.5deg) translateZ(-20px);
+    transform: skew($block-deg) translateZ(-$translateZ);
 }
 
 .block:nth-child(1) .bg {
@@ -81,7 +85,7 @@ body {
 }
 
 .block:nth-child(2) {
-    transform: skew(-11.5deg) translate(1px, 71px);
+    transform: skew($block-deg) translate(1px, 71px);
 }
 
 .block:nth-child(2) .bg {
@@ -91,7 +95,7 @@ body {
 }
 
 .block:nth-child(3) {
-    transform: skew(-11.5deg) translateZ(-20px) translateX(4px);
+    transform: skew($block-deg) translateZ(-$translateZ) translateX(4px);
 }
 
 .block:nth-child(3) .bg {
@@ -100,7 +104,7 @@ body {
 }
 
 .block:nth-child(4) {
-    transform: skew(-11.5deg) translate(-5px, 56px);
+    transform: skew($block-deg) translate(-5px, 56px);
 }
 
 .block:nth-child(4) .bg {
@@ -137,25 +141,38 @@ body {
     z-index: 103;
 }
 
+.container.selected .block {
+    filter: grayscale(1);
+}
 
 .container.selected-1 .block:nth-child(1) {
-    transform: skew(-11.5deg) translateZ(20px) translateX(14px);
-    transition: .5s;
+    transform: skew($block-deg) translateZ($translateZ) translateX(14px);
+    transition: $transition-seconds;
+    filter: grayscale(0);
+}
+
+.container.selected-2 .block:nth-child(2) {
+    filter: grayscale(0);
 }
 
 .container.selected-3 .block:nth-child(3) {
-    transform: skew(-11.5deg) translateZ(20px) translateX(-12px);
-    transition: .5s;
+    transform: skew($block-deg) translateZ($translateZ) translateX(-12px);
+    transition: $transition-seconds;
+    filter: grayscale(0);
+}
+
+.container.selected-4 .block:nth-child(4) {
+    filter: grayscale(0);
 }
 
 .container.selected-1 .block:nth-child(1) .blur, .container.selected-3 .block:nth-child(3) .blur {
     background: rgba(255, 132, 221, 0.80);
-    filter: blur(100px);
-    transition: .5s;
+    filter: blur($blur-filter);
+    transition: $transition-seconds;
 }
 
 .container.selected-2 .block:nth-child(2) .blur, .container.selected-4 .block:nth-child(4) .blur {
     background: rgba(139, 137, 255, 0.80);
-    filter: blur(100px);
-    transition: .5s;
+    filter: blur($blur-filter);
+    transition: $transition-seconds;
 }

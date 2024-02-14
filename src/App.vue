@@ -1,54 +1,90 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from "vue";
+import {ref} from "vue";
 
-const block1 = ref()
 const selected = ref(0);
 
-const onClick2 = (e:Event) =>{
-  const left = block1.value.getBoundingClientRect().left
-  const top = block1.value.getBoundingClientRect().top
-  //console.log(e, left, block1.value.offsetLeft, top, block1.value.offsetTop)
+const onClickContainer = (e: Event) => {
+  selected.value = 0
 }
 
-const onClickAfter = (id: number) =>{
-  if (selected.value == id){
+const onClickBlock = (id: number) => {
+  if (selected.value === id){
     selected.value = 0
-    return
+  }else{
+    selected.value = id
   }
-
-  selected.value = id
 }
 
-const onClick3 = (id: number) => {
-  console.log(id)
+const onClick1 = (e: Event) => {
+  const x = e.offsetX
+  const w = e.target.clientWidth
+
+  if (w / 2 <= x) {
+    onClickBlock(2)
+  } else {
+    onClickBlock(0)
+  }
+}
+
+const onClick2 = (e: Event) => {
+  const x = e.offsetX
+  const w = e.target.clientWidth
+
+  if (w / 2 > x) {
+    onClickBlock(1)
+  } else {
+    onClickBlock(3)
+  }
+}
+
+const onClick3 = (e: Event) => {
+  const x = e.offsetX
+  const w = e.target.clientWidth
+
+  if (w / 2 > x) {
+    onClickBlock(2)
+  } else {
+    onClickBlock(4)
+  }
+}
+
+const onClick4 = (e: Event) => {
+  const x = e.offsetX
+  const w = e.target.clientWidth
+
+  if (w / 2 > x) {
+    onClickBlock(3)
+  } else {
+    onClickBlock(0)
+  }
 }
 </script>
 
 <template>
-  <div class="container" :class="`selected-${selected}`">
-    <div class="block block-pink" ref="block1">
+  <div class="container" :class="`${!!selected && 'selected'} selected-${selected}`" @click="onClickContainer">
+    <div class="block block-pink">
       <div class="blur"></div>
-      <div class="bg" @click="onClick3(1)"></div>
-      <div class="action" @click.prevent="onClickAfter(1)"></div>
-      <div class="after after1" @click.prevent="onClickAfter(1)"></div>
-      <div class="after after2" @click.prevent="onClickAfter(1)"></div>
+      <div class="bg" @click.stop="onClick1"></div>
+      <div class="action" @click.stop="onClickBlock(1)"></div>
+      <div class="after after1" @click.stop="onClickBlock(1)"></div>
+      <div class="after after2" @click.stop="onClickBlock(1)"></div>
     </div>
     <div class="block">
       <div class="blur"></div>
-      <div class="bg" @click="onClick3(2)"></div>
-      <div class="action" @click="onClickAfter(2)"></div>
+      <div class="bg" @click.stop="onClick2"></div>
+      <div class="action" @click.stop="onClickBlock(2)"></div>
     </div>
     <div class="block block-pink">
       <div class="blur"></div>
-      <div class="bg"></div>
-      <div class="action" @click="onClickAfter(3)"></div>
-      <div class="after after1" @click.prevent="onClickAfter(3)"></div>
-      <div class="after after2" @click.prevent="onClickAfter(3)"></div>
+      <div class="bg" @click.stop="onClick3"></div>
+      <div class="action" @click.stop="onClickBlock(3)"></div>
+      <div class="after after1" @click.stop="onClickBlock(3)"></div>
+      <div class="after after2" @click.stop="onClickBlock(3)"></div>
     </div>
     <div class="block">
       <div class="blur"></div>
-      <div class="bg"></div>
-      <div class="action" @click.prevent="onClickAfter(4)"></div>
+      <div class="bg" @click.stop="onClick4"></div>
+      <div class="action" @click.stop="onClickBlock(4)"></div>
     </div>
   </div>
 </template>
