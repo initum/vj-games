@@ -85,7 +85,7 @@ body {
 }
 
 .block:nth-child(2) {
-    transform: skew($block-deg) translate(1px, 71px);
+    transform: skew($block-deg) translateX(1px) translateY(71px);
 }
 
 .block:nth-child(2) .bg {
@@ -104,7 +104,7 @@ body {
 }
 
 .block:nth-child(4) {
-    transform: skew($block-deg) translate(-5px, 56px);
+    transform: skew($block-deg) translateX(-5px) translateY(56px);
 }
 
 .block:nth-child(4) .bg {
@@ -152,6 +152,7 @@ body {
 }
 
 .container.selected-2 .block:nth-child(2) {
+    transform: skew($block-deg) translateX(1px) translateY(41px);
     filter: grayscale(0);
 }
 
@@ -162,6 +163,7 @@ body {
 }
 
 .container.selected-4 .block:nth-child(4) {
+    transform: skew($block-deg) translateX(-5px) translateY(26px);
     filter: grayscale(0);
 }
 
