@@ -1,28 +1,40 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
+import { ref, watch } from "vue";
+import axios from "axios"; // Импорт Axios
 
 const selected = ref(0);
 
-watch(()=>selected.value, (id: typeof selected.value)=>{
-  switch (id){
-    case 1:{
-      console.log("Нажата кнопка 1")
+// Функция для отправки OSC сообщений теперь принимает адрес OSC в качестве параметра
+const sendOscMessage = (address, id) => {
+  axios.post('http://localhost:3000/send-osc', {
+    address, // Используйте переданный адрес
+    args: [id],
+  })
+  .then(() => console.log(`OSC message sent for address: ${address} with id: ${id}`))
+  .catch(error => console.error('Error sending OSC message:', error));
+};
+
+watch(() => selected.value, (id) => {
+  switch (id) {
+    case 1:
+      console.log("Нажата кнопка 1");
+      // Отправка OSC сообщений для кнопки 1 с соответствующими адресами
+      sendOscMessage('/composition/columns/1/connect', 1);
       break;
-    }
-    case 2:{
-      console.log("Нажата кнопка 2")
+    case 2:
+      console.log("Нажата кнопка 2");
+      sendOscMessage('/composition/columns/2/connect', 1);
       break;
-    }
-    case 3:{
-      console.log("Нажата кнопка 3")
+    case 3:
+      console.log("Нажата кнопка 3");
+      sendOscMessage('/composition/columns/3/connect', 1);
       break;
-    }
-    case 4:{
-      console.log("Нажата кнопка 4")
+    case 4:
+      console.log("Нажата кнопка 4");
+      sendOscMessage('/composition/columns/4/connect', 1);
       break;
-    }
   }
-})
+});
 
 const onClickContainer = () => {
   selected.value = 0

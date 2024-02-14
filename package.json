@@ -12,6 +12,12 @@
     "lint": "eslint vj-games --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "axios": "^1.6.7",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-osc": "^9.1.0",
+    "osc-js": "^2.4.0",
     "sass": "^1.70.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
