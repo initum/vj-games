@@ -3,7 +3,7 @@ import {ref} from "vue";
 
 const selected = ref(0);
 
-const onClickContainer = (e: Event) => {
+const onClickContainer = (e: MouseEvent) => {
   selected.value = 0
 }
 
@@ -15,7 +15,7 @@ const onClickBlock = (id: number) => {
   }
 }
 
-const onClick1 = (e: Event) => {
+const onClick1 = (e: MouseEvent) => {
   const x = e.offsetX
   const w = e.target.clientWidth
 
@@ -26,7 +26,7 @@ const onClick1 = (e: Event) => {
   }
 }
 
-const onClick2 = (e: Event) => {
+const onClick2 = (e: MouseEvent) => {
   const x = e.offsetX
   const w = e.target.clientWidth
 
@@ -37,7 +37,7 @@ const onClick2 = (e: Event) => {
   }
 }
 
-const onClick3 = (e: Event) => {
+const onClick3 = (e: MouseEvent) => {
   const x = e.offsetX
   const w = e.target.clientWidth
 
@@ -48,7 +48,7 @@ const onClick3 = (e: Event) => {
   }
 }
 
-const onClick4 = (e: Event) => {
+const onClick4 = (e: MouseEvent) => {
   const x = e.offsetX
   const w = e.target.clientWidth
 
