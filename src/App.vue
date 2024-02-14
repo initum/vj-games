@@ -16,8 +16,9 @@ const onClickBlock = (id: number) => {
 }
 
 const onClick1 = (e: MouseEvent) => {
+  const target = e.target as HTMLTextAreaElement;
   const x = e.offsetX
-  const w = e.target.clientWidth
+  const w = target.clientWidth
 
   if (w / 2 <= x) {
     onClickBlock(2)
@@ -27,8 +28,9 @@ const onClick1 = (e: MouseEvent) => {
 }
 
 const onClick2 = (e: MouseEvent) => {
+  const target = e.target as HTMLTextAreaElement;
   const x = e.offsetX
-  const w = e.target.clientWidth
+  const w = target.clientWidth
 
   if (w / 2 > x) {
     onClickBlock(1)
@@ -38,8 +40,9 @@ const onClick2 = (e: MouseEvent) => {
 }
 
 const onClick3 = (e: MouseEvent) => {
+  const target = e.target as HTMLTextAreaElement;
   const x = e.offsetX
-  const w = e.target.clientWidth
+  const w = target.clientWidth
 
   if (w / 2 > x) {
     onClickBlock(2)
@@ -49,8 +52,9 @@ const onClick3 = (e: MouseEvent) => {
 }
 
 const onClick4 = (e: MouseEvent) => {
+  const target = e.target as HTMLTextAreaElement;
   const x = e.offsetX
-  const w = e.target.clientWidth
+  const w = target.clientWidth
 
   if (w / 2 > x) {
     onClickBlock(3)
