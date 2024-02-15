@@ -33,7 +33,7 @@ watch(() => selected.value, (newVal, oldVal) => {
         sendOscMessage('/composition/columns/7/connect', 1);
         break;
       case 4:
-        sendOscMessage('/composition/columns/9/connect', 1);
+        sendOscMessage('/composition/columns/90/connect', 1);
         break;
     }
   }
